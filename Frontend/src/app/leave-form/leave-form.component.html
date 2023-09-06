@@ -1,0 +1,138 @@
+<body>
+
+  <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+
+  <div>
+
+  <label for="employee_name">Employee Name:</label>
+
+  <input type="text" formControlName="employee_name">
+
+  <div *ngIf="leaveForm.get('employee_name')?.invalid && leaveForm.get('employee_name')?.touched">
+
+  <span *ngIf="leaveForm.get('employee_name')?.errors?.['required']">Employee Name is required.</span>
+
+  </div>
+
+  </div>
+
+ 
+  <!-- Fieldset for the leave types selection -->
+
+  <fieldset>
+
+  <legend>Leave Type</legend>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="leave_type" value="Casual">Casual</label>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="leave_type" value="Earned">Earned</label>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="leave_type" value="Sick">Sick</label>
+
+  </fieldset>
+
+  <!-- Initializing the Leave From and Leave To -->
+
+  <div>
+
+  <label for="leave_from">Leave From</label>
+
+  <input type="date" formControlName="leave_from">
+
+  <div *ngIf="leaveForm.get('leave_from')?.invalid && leaveForm.get('leave_from')?.touched">
+
+  <span *ngIf="leaveForm.get('leave_from')?.errors?.['required']">Start Date is required.</span>
+
+  </div>
+
+  </div>
+
+ 
+
+  <div>
+
+  <label for="leave_to">Leave To</label>
+
+  <input type="date" formControlName="leave_to">
+
+  <div *ngIf="leaveForm.get('leave_to')?.invalid && leaveForm.get('leave_to')?.touched">
+
+  <span *ngIf="leaveForm.get('leave_to')?.errors?.['required']">End Date is required.</span>
+
+  </div>
+
+  </div>
+
+ <!-- Fieldset for the team name selection -->
+
+  <fieldset>
+
+  <legend>Team Name</legend>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="team_name" value="AWS">AWS</label><br>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="team_name" value="AZURE">AZURE</label><br>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="team_name" value="DATA">DATA</label><br>
+
+  <label class="radio-inline">
+
+  <input type="radio" formControlName="team_name" value="SRE">SRE</label><br>
+
+  </fieldset>
+
+ 
+  <!-- Function for checking if file type is Sick then only the file upload method appears -->
+  
+  <div *ngIf="leaveForm.get('leave_type')?.value === 'Sick'">
+
+  <label for="file">File Upload:</label>
+
+  <input type="file" id="fileInput" (change)="onFileChange($event)" formControlName="file">
+
+  </div>
+
+  <!-- Drop Down for Manager Name Selection -->
+
+  <div>
+
+  <label for="manager_name">Choose Your Manager:</label>
+
+  <select formControlName="manager_name">
+
+  <option value="Ranjan">Ranjan</option>
+
+  <option value="Sandeep Chaudhary">Rohan</option>
+
+  <option value="Shubham Singh Rajput">Shubham</option>
+
+  <option value="Ritik Chauhan">Ritik</option>
+
+  </select>
+
+  <div *ngIf="leaveForm.get('manager_name')?.invalid && leaveForm.get('manager_name')?.touched">
+
+  <span *ngIf="leaveForm.get('manager_name')?.errors?.['required']">Manager is required.</span>
+
+  </div>
+
+  </div>
+
+
+  <button type="submit" [disabled]="!leaveForm.valid">Submit</button>
+
+  </form>
+
+  </body>

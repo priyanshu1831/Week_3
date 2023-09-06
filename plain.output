@@ -1,0 +1,18 @@
+Feature: Leave Form Page Functionality
+
+  Scenario: Opening the Leave Form Page
+    Given the user is on the leave form page ... passed
+    Then the user should see the Leave Form component ... passed
+
+Feature: Leave Form Functionality Testing
+
+  Scenario: Filling and Submitting the Leave Form with Valid Data
+    When the user fills in the Leave Form with valid data ... passed
+    And submits the form ... passed
+
+Feature: Show Data Page Functionality
+
+  Scenario: Opening the Show Data Page
+    Given the user is on the Show Data page ... passed
+    Then the user should see data displayed ... passed
+

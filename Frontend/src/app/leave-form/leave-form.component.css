@@ -1,0 +1,89 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("bg1.jpg");
+}
+ 
+
+form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #f6faf5;
+}
+
+legend {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  align-items: normal;
+}
+
+input[type="file"] {
+  margin-bottom: 0;
+}
+
+select {
+  width: 100%;
+}
+
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  padding: 10px;
+  height: 200px;
+  position: relative;
+}
+
+
+button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ng-invalid {
+  border: 1px solid #0400ff;
+}
+
+.ng-invalid:not(form){
+  border: 1px solid #8d130a;
+}
