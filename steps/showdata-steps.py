@@ -9,7 +9,6 @@ def before_scenario(context, scenario):
 def after_scenario(context, scenario):
     context.driver.quit()
 
- 
 # Step definitions for Show Data
 @given('the user is on the Show Data page')
 def step_user_on_show_data_page(context):
