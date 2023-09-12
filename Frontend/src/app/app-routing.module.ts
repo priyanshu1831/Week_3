@@ -20,9 +20,7 @@ const routes: Routes = [
 
   { path: 'piechart', component: ShowdataComponent, data: { title: 'Pie Chart Visualization' } },
 
-  { path: 'barchart', component: ShowdataComponent, data: { title: 'Bar Chart Visualization' } }
-
-
+  { path: 'barchart', component: ShowdataComponent, data: { title: 'Bar Chart Visualization' } },
   
 ];
 
