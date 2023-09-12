@@ -9,6 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LeaveFormComponent } from './leave-form/leave-form.component';
 import { ShowdataComponent } from './showdata/showdata.component';
 import { DialogComponent } from './leave-form/dialog.component';
+import { PiechartComponent } from './piechart/piechart.component';
+import { BarchartComponent } from './barchart/barchart.component';
+import { TabularComponent } from './tabular/tabular.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { DialogComponent } from './leave-form/dialog.component';
     LeaveFormComponent, 
     ShowdataComponent,
     DialogComponent,
+    PiechartComponent,
+    BarchartComponent,
+    TabularComponent,
   ],
   imports: [
     BrowserModule,

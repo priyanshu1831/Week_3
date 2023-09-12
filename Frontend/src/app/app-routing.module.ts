@@ -14,7 +14,15 @@ const routes: Routes = [
 
   { path: 'leave', component: LeaveFormComponent, data: { title: 'Leave Form' } },
 
-  { path: 'showData', component: ShowdataComponent, data: { title: 'Data Page' } }
+  { path: 'showData', component: ShowdataComponent, data: { title: 'Data Page' } },
+
+  { path: 'tabular', component: ShowdataComponent, data: { title: 'Tabular Representation' } },
+
+  { path: 'piechart', component: ShowdataComponent, data: { title: 'Pie Chart Visualization' } },
+
+  { path: 'barchart', component: ShowdataComponent, data: { title: 'Bar Chart Visualization' } }
+
+
   
 ];
 
