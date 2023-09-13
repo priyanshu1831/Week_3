@@ -38,10 +38,6 @@ services:
       # First one is the host port and second one is the container port
     depends_on:
       - backend
-    stdin_open: true
-    # Enable interactive connection with the running container
-    tty: true
-    # Allocates tty for the frontend
     environment:
       - POST_API_URL=$(POST_API_URL)
       - GET_API_URL=$(GET_API_URL)
@@ -49,7 +45,7 @@ services:
 # volumes for PostgreSQL data, configuration, and logs.
 volumes:
     pgdata:
-      {}
+      driver: local
     pgconf:
       driver: local
     pglog: 
