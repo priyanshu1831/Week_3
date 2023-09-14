@@ -2,3 +2,4 @@ FROM golang:latest
 WORKDIR /app
 COPY . .
 CMD ["go" , "run" , "."]
+EXPOSE 8080

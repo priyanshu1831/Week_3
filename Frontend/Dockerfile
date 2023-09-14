@@ -3,4 +3,5 @@ WORKDIR /app
 RUN npm install -g @angular/cli@13
 COPY . .
 RUN npm ci 
-CMD ["ng", "serve", "--host", "0.0.0.0"] 
+CMD ["ng", "serve"]
+EXPOSE 4200
