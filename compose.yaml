@@ -17,9 +17,7 @@
         - pgdata:/var/lib/postgresql/data
         
     backend:
-      build:
-        context: ./Backend
-        dockerfile: Dockerfile
+      image : backend 
       network_mode: "host"
       depends_on:
         - database
@@ -30,11 +28,8 @@
         - DB_NAME=$(DB_NAME)
 
     frontend:
-      build:
-        context: ./Frontend
-        dockerfile: Dockerfile
-      ports:
-        - "4200:4200"
+      image: frontend
+      network_mode: "host"
         # First one is the host port and second one is the container port
       depends_on:
         - backend
