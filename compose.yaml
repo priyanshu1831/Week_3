@@ -17,7 +17,7 @@
         - pgdata:/var/lib/postgresql/data
         
     backend:
-      image : backend 
+      image : backend1 
       network_mode: "host"
       depends_on:
         - database
