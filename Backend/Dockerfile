@@ -1,3 +1,4 @@
+# Stage 1
 FROM golang:alpine3.18 as builder
 WORKDIR /project/go-docker/
 # COPY go.mod, go.sum and download the dependencies
