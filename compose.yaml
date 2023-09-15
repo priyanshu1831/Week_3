@@ -30,7 +30,6 @@
     frontend:
       image: frontend
       network_mode: "host"
-        # First one is the host port and second one is the container port
       depends_on:
         - backend
       environment:
