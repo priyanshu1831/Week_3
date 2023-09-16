@@ -16,17 +16,17 @@ export class PiechartComponent implements OnInit {
   ngOnInit(): void {
     this.getDataForPieChart();
   }
-
+  
   createChart() {
     Chart.register(...registerables);
-
-    this.chart = new Chart("myChart", {
+  
+    this.chart = new Chart("myChart", { // Use "myChart" to match the HTML canvas ID
       type: 'pie',
       data: {
-        labels: this.pieChartData.map(item => item.TeamName), // Use TeamName from the fetched data
+        labels: this.pieChartData.map(item => item.TeamName),
         datasets: [{
           label: 'My First Dataset',
-          data: this.pieChartData.map(item => item.Leaves), // Use Leaves from the fetched data
+          data: this.pieChartData.map(item => item.Leaves),
           backgroundColor: [
             'red',
             'pink',
@@ -38,9 +38,6 @@ export class PiechartComponent implements OnInit {
           hoverOffset: 4
         }],
       },
-      options: {
-        aspectRatio: 2.5
-      }
     });
   }
 

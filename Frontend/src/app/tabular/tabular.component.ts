@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./tabular.component.css']
 })
 export class TabularComponent {
-  leaveRequests: any[] = [];
+  tabledata: any[] = [];
 
   constructor(private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class TabularComponent {
     this.http.get('http://localhost:8080/tabledata')
       .subscribe(
         (data: any) => {
-          this.leaveRequests = data;
+          this.tabledata = data;
         },
         error => {
           console.error('Error fetching data:', error);
