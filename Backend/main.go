@@ -46,6 +46,17 @@ func main() {
 		}
 		c.JSON(http.StatusOK, leaveRequests)
 	})
+	
+	router.GET("/piechart", func(c *gin.Context) {
+		pie_data, err := getDataForPie(db)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Internal Server Error",
+			})
+			return
+		}
+		c.JSON(http.StatusOK, pie_data)
+	})
 
 	router.POST("/postData", func(c *gin.Context) {
 		postData(c, db)

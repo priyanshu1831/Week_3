@@ -10,3 +10,9 @@ type FormData struct {
 	ManagerName string `db:"manager_name" json:"manager_name" form:"manager_name"`
 	FilePath string `db:"file_path" json:"file_path" form:"file_path"`
 }
+
+type Data struct {
+	Leaves    int    `db:"leave_id" json:"leave_id" form:"leave_id"`
+	TeamName  string `db:"employee_name" json:"employee_name" form:"employee_name"`
+	LeaveType string `db:"leave_type" json:"leave_type" form:"leave_type"`
+}

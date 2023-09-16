@@ -43,7 +43,33 @@ func getData(db *sql.DB) ([]FormData, error) {
 
     return leaveRequests, nil
 }
+func getDataForPie(db *sql.DB) ([]Data, error) {
+    query := "SELECT leave_id, employee_name, leave_type FROM kpi6"
+    rows, err := db.Query(query)
+    if err != nil {
+        log.Println("Failed to fetch leave requests:", err)
+        return nil, err
+    }
+    defer rows.Close()
 
+    pie_data := []Data{}
+
+    for rows.Next() {
+        var lr Data
+        err := rows.Scan(
+            &lr.Leaves,
+            &lr.TeamName,
+            &lr.LeaveType,
+        )
+        if err != nil {
+            log.Println("Failed to scan leave request:", err)
+            return nil, err
+        }
+        pie_data = append(pie_data, lr)
+    }
+
+    return pie_data, nil
+}
 func postData(c *gin.Context, db *sql.DB) {
     var formdata FormData
     if err := c.ShouldBind(&formdata); err != nil {
