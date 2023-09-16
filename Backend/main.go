@@ -47,15 +47,26 @@ func main() {
 		c.JSON(http.StatusOK, leaveRequests)
 	})
 
-	router.GET("/piechart", func(c *gin.Context) {
-		pie_data, err := getDataForPie(db)
+	router.GET("/piechart/devops", func(c *gin.Context) {
+		pie_data_devops, err := getDataForPieDevops(db)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": "Internal Server Error",
 			})
 			return
 		}
-		c.JSON(http.StatusOK, pie_data)
+		c.JSON(http.StatusOK, pie_data_devops)
+	})
+
+	router.GET("/piechart/it", func(c *gin.Context) {
+		pie_data_it, err := getDataForPieIT(db)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Internal Server Error",
+			})
+			return
+		}
+		c.JSON(http.StatusOK, pie_data_it)
 	})
 
 	router.GET("/barchart", func(c *gin.Context) {

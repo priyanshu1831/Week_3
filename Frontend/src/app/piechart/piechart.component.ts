@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { HttpClient } from '@angular/common/http'; // Import HttpClient
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-piechart',
@@ -8,51 +8,107 @@ import { HttpClient } from '@angular/common/http'; // Import HttpClient
   styleUrls: ['./piechart.component.css']
 })
 export class PiechartComponent implements OnInit {
-  public chart: any;
-  public pieChartData: any[] = []; // Store the data from the backend here
+  public devopsChart: any;
+  public itChart: any;
+  public devopsChartData: any[] = [];
+  public itChartData: any[] = [];
 
-  constructor(private http: HttpClient) {} // Inject the HttpClient
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.getDataForPieChart();
+    this.getDataForPieChartDevOps();
+    this.getDataForPieChartIT();
   }
-  
-  createChart() {
+
+  createDevOpsChart() {
     Chart.register(...registerables);
-  
-    this.chart = new Chart("myChart", { // Use "myChart" to match the HTML canvas ID
+    this.devopsChart = new Chart("devopsChart", {
       type: 'pie',
       data: {
-        labels: this.pieChartData.map(item => item.TeamName),
+        labels: this.devopsChartData.map(item => item.leave_type),
         datasets: [{
-          label: 'My First Dataset',
-          data: this.pieChartData.map(item => item.Leaves),
+          label: 'Leave Types',
+          data: this.devopsChartData.map(item => item.leave_id),
           backgroundColor: [
             'red',
             'pink',
             'green',
-            'yellow',
-            'orange',
-            'blue',
           ],
           hoverOffset: 4
         }],
       },
+      options: {
+        aspectRatio: 2.5,
+        plugins: {
+          title: {
+              display: true,
+              text: 'Pie Chart For DevOps',
+              padding: {
+                  top: 10,
+                  bottom: 30
+              }
+          }
+      }
+      }
     });
   }
 
-  // Fetch data from the backend
-  getDataForPieChart() {
-    this.http.get<any[]>('http://localhost:8080/piechart') 
+  createITChart() {
+    Chart.register(...registerables);
+    this.itChart = new Chart("itChart", {
+      type: 'pie',
+      data: {
+        labels: this.itChartData.map(item => item.leave_type),
+        datasets: [{
+          label: 'Leave Types',
+          data: this.itChartData.map(item => item.leave_id),
+          backgroundColor: [
+            'red',
+            'pink',
+            'green',
+          ],
+          hoverOffset: 4
+        }],
+      },
+      options: {
+        aspectRatio: 2.5,
+        plugins: {
+          title: {
+              display: true,
+              text: 'Pie Chart For IT',
+              padding: {
+                  top: 10,
+                  bottom: 30
+              }
+          }
+      }
+      }
+    });
+  }
+
+  getDataForPieChartDevOps() {
+    this.http.get<any[]>('http://localhost:8080/piechart/devops')
       .subscribe(
         (data) => {
-          this.pieChartData = data;
-          this.createChart();
+          this.devopsChartData = data;
+          this.createDevOpsChart();
         },
         (error) => {
-          console.error('Error fetching data:', error);
+          console.error('Error fetching DevOps data:', error);
+        }
+      );
+  }
+
+  getDataForPieChartIT() {
+    this.http.get<any[]>('http://localhost:8080/piechart/it')
+      .subscribe(
+        (data) => {
+          this.itChartData = data;
+          this.createITChart();
+        },
+        (error) => {
+          console.error('Error fetching IT data:', error);
         }
       );
   }
 }
-  
