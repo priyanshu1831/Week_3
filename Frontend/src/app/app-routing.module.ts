@@ -16,7 +16,7 @@ const routes: Routes = [
 
   { path: 'showData', component: ShowdataComponent, data: { title: 'Data Page' } },
 
-  { path: 'tabular', component: ShowdataComponent, data: { title: 'Tabular Representation' } },
+  { path: 'tabledata', component: ShowdataComponent, data: { title: 'Tabular Representation' } },
 
   { path: 'piechart', component: ShowdataComponent, data: { title: 'Pie Chart Visualization' } },
 

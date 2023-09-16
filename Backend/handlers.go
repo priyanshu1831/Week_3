@@ -44,7 +44,7 @@ func getData(db *sql.DB) ([]FormData, error) {
     return leaveRequests, nil
 }
 func getDataForPie(db *sql.DB) ([]Data, error) {
-    query := "SELECT leave_id, employee_name, leave_type FROM kpi6"
+    query := "SELECT * FROM kpi6"
     rows, err := db.Query(query)
     if err != nil {
         log.Println("Failed to fetch leave requests:", err)
@@ -70,6 +70,62 @@ func getDataForPie(db *sql.DB) ([]Data, error) {
 
     return pie_data, nil
 }
+
+func getDataForBar(db *sql.DB) ([]BarData, error) {
+    query := "SELECT * FROM kpi4"
+    rows, err := db.Query(query)
+    if err != nil {
+        log.Println("Failed to fetch leave requests:", err)
+        return nil, err
+    }
+    defer rows.Close()
+
+    bar_data := []BarData{}
+
+    for rows.Next() {
+        var lr BarData
+        err := rows.Scan(
+            &lr.COUNT,
+            &lr.ManagerName,
+        )
+        if err != nil {
+            log.Println("Failed to scan leave request:", err)
+            return nil, err
+        }
+        bar_data = append(bar_data, lr)
+    }
+
+    return bar_data, nil
+}
+
+func getDataForTable(db *sql.DB) ([]TableData, error) {
+    query := "SELECT * FROM kpi3"
+    rows, err := db.Query(query)
+    if err != nil {
+        log.Println("Failed to fetch leave requests:", err)
+        return nil, err
+    }
+    defer rows.Close()
+
+    table_data := []TableData{}
+
+    for rows.Next() {
+        var lr TableData
+        err := rows.Scan(
+            &lr.EmployeeName,
+            &lr.COUNT,
+            &lr.RANK,
+        )
+        if err != nil {
+            log.Println("Failed to scan leave request:", err)
+            return nil, err
+        }
+        table_data = append(table_data, lr)
+    }
+
+    return table_data, nil
+}
+
 func postData(c *gin.Context, db *sql.DB) {
     var formdata FormData
     if err := c.ShouldBind(&formdata); err != nil {

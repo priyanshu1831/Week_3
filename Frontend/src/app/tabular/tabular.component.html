@@ -1,1 +1,24 @@
 <p>tabular works!</p>
+<body>
+    <table class="center">
+      <thead>
+        <tr>
+          <th>Leave ID</th>
+          <th>Employee Name</th>
+          <th>Leave Type</th>
+          <th>Leave From</th>
+          <th>Leave To</th>
+          <th>Team Name</th>
+          <th>Manager Name</th>
+          <th>File Path</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of leaveRequests">
+          <td>{{ request.employee_name }}</td>
+          <td>{{ request.count }}</td>
+          <td>{{ request.rank }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </body>

@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
-	
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
@@ -35,7 +35,7 @@ func main() {
 	// Routes for GET and POST methods
 
 	router.Static("/static", "./static")
-	
+
 	router.GET("/getData", func(c *gin.Context) {
 		leaveRequests, err := getData(db)
 		if err != nil {
@@ -46,9 +46,31 @@ func main() {
 		}
 		c.JSON(http.StatusOK, leaveRequests)
 	})
-	
+
 	router.GET("/piechart", func(c *gin.Context) {
 		pie_data, err := getDataForPie(db)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Internal Server Error",
+			})
+			return
+		}
+		c.JSON(http.StatusOK, pie_data)
+	})
+
+	router.GET("/barchart", func(c *gin.Context) {
+		pie_data, err := getDataForBar(db)
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": "Internal Server Error",
+			})
+			return
+		}
+		c.JSON(http.StatusOK, pie_data)
+	})
+
+	router.GET("/tabledata", func(c *gin.Context) {
+		pie_data, err := getDataForTable(db)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": "Internal Server Error",

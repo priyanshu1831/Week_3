@@ -12,7 +12,18 @@ type FormData struct {
 }
 
 type Data struct {
-	Leaves    int    `db:"leave_id" json:"leave_id" form:"leave_id"`
+	Leaves    float32    `db:"leave_id" json:"leave_id" form:"leave_id"`
 	TeamName  string `db:"employee_name" json:"employee_name" form:"employee_name"`
 	LeaveType string `db:"leave_type" json:"leave_type" form:"leave_type"`
+}
+
+type BarData struct {
+	COUNT int `db:"count" json:"count" form:"count"`
+	ManagerName string `db:"manager_name" json:"manager_name" form:"manager_name"`
+}
+
+type TableData struct {
+	EmployeeName string `db:"employee_name" json:"employee_name" form:"employee_name"`
+	COUNT int `db:"count" json:"count" form:"count"`
+	RANK int `db:"rank" json:"rank" form:"rank"`
 }
