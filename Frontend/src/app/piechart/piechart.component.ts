@@ -34,7 +34,7 @@ export class PiechartComponent implements OnInit {
             'pink',
             'green',
           ],
-          hoverOffset: 4
+          hoverOffset: 4 
         }],
       },
       options: {

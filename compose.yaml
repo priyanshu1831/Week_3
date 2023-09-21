@@ -14,7 +14,6 @@
         - POSTGRES_PASSWORD='Priyanshu12!'
         - POSTGRES_DB='postgres'
         - POSTGRES_INITDB_ARGS='--encoding=UTF-8'
-        - pgdata:/var/lib/postgresql/data
         
     backend:
       image : backend
