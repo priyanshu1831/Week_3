@@ -32,6 +32,7 @@ func getData(db *sql.DB) ([]FormData, error) {
 			&lr.LeaveTo,
 			&lr.TeamName,
 			&lr.ManagerName,
+			&lr.LeaveDuration,
 			&lr.FilePath,
 		)
 		if err != nil {

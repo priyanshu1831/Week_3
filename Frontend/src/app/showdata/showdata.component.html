@@ -9,6 +9,7 @@
       <th>Leave To</th>
       <th>Team Name</th>
       <th>Manager Name</th>
+      <th>Leave Duration</th>
       <th>File Path</th>
     </tr>
   </thead>
@@ -21,6 +22,8 @@
       <td>{{ request.leave_to.slice(0,10)}}</td>
       <td>{{ request.team_name }}</td>
       <td>{{ request.manager_name }}</td>
+      <td>{{request.leave_duration}}</td>
+      <td>{{request.file_path}}</td>
       <td>
         <ng-container *ngIf="request.leave_type === 'Sick'">
         <a [href]="getFileLink(request.file_path)" download>

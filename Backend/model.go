@@ -8,6 +8,7 @@ type FormData struct {
 	LeaveTo      string `db:"leave_to" json:"leave_to" form:"leave_to"`
 	TeamName     string `db:"team_name" json:"team_name" form:"team_name"`
 	ManagerName  string `db:"manager_name" json:"manager_name" form:"manager_name"`
+	LeaveDuration float32 `db:"leave_duration" json:"leave_duration" form:"leave_duration"`
 	FilePath     string `db:"file_path" json:"file_path" form:"file_path"`
 }
 
