@@ -28,7 +28,7 @@ func main() {
 
 	// Enable CORS
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:4200"} // Adjust this to match your frontend URL
+	config.AllowOrigins = []string{"http://localhost:4200"}
 	config.AllowMethods = []string{"GET", "POST"}
 	router.Use(cors.New(config))
 

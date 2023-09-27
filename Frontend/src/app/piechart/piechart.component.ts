@@ -38,7 +38,7 @@ export class PiechartComponent implements OnInit {
         }],
       },
       options: {
-        aspectRatio: 2.5,
+        aspectRatio: 1.5,
         plugins: {
           title: {
               display: true,
@@ -71,7 +71,7 @@ export class PiechartComponent implements OnInit {
         }],
       },
       options: {
-        aspectRatio: 2.5,
+        aspectRatio: 1.5,
         plugins: {
           title: {
               display: true,
